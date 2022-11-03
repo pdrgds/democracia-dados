@@ -6,13 +6,15 @@ const cliProgress = require("cli-progress");
 
 const pathRelacaoIndicacoes2022 = "../dados/Relacao-de-indicacoes-Consolidado-2022.xlsx";
 
-export const getRelacaoIndicacoes2022 = () =>
+// https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-mistas/cmo/Indicacoes-para-execucao-orcamentaria-em-RP9_LOA-2022
+export const getDocumentoComissaoPlanos2022 = () =>
   XLSX.utils.sheet_to_json(
     XLSX.readFile(path.join(__dirname, pathRelacaoIndicacoes2022), {
       cellDates: true,
     }).Sheets.Plan1
   );
 
+// https://www.portaltransparencia.gov.br/download-de-dados/despesas-favorecidos
 export const getRecursosPorFavorecidos = async () => {
   const recursosPorFavorecidoCache = {};
   const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
